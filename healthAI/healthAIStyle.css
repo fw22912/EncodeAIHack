@@ -1,8 +1,8 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Calibri, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #fdf3eb;
 }
 
 #content {
@@ -16,6 +16,13 @@ body {
 }
 
 .container {
+    font-family: Calibri, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.titles {
+    font-family: "Gochi Hand", cursive;
     display: flex;
     flex-direction: column;
 }
@@ -27,8 +34,9 @@ body {
 }
 
 .text-bubble {
-    background-color: #007bff;
-    color: #fff;
+    font-family: Calibri, sans-serif;
+    background-color: #faca5c;
+    color: #000000;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
@@ -54,19 +62,21 @@ button {
 }
 
 #save-btn {
-    background-color: #28a745;
+    font-family: "Gochi Hand", cursive;
+    background-color: #6acd90;
 }
 
 
 .back-button {
     text-decoration: none;
-    color: #007bff;
+    color: #7393b2;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
 #start-btn {
     background-image: url('../images/mic.png');
+    background-color: #7cacdc;
     background-size: cover;
     width: 30px;
     height: 30px;
@@ -80,8 +90,8 @@ button {
 }
 
 .user-message {
-    background-color: #28a745;
-    color: #fff;
+    background-color: #fcd3d3;
+    color: #000000;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
@@ -101,6 +111,7 @@ button {
 }
 
 .quit-to-checkin {
+    font-family: "Gochi Hand", cursive;
     position: absolute;
     top: 10px;
     right: 10px;
