@@ -1,8 +1,8 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Calibri, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #fdf3eb;
 }
 
 #content {
@@ -14,6 +14,13 @@ body {
 }
 
 .container {
+    font-family: Calibri, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.titles {
+    font-family: "Gochi Hand", cursive;
     display: flex;
     flex-direction: column;
 }
@@ -27,6 +34,7 @@ body {
 .text-bubble {
     background-color: lightslategray;
     color: #fff;
+    font-family: Calibri, sans-serif;
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
@@ -53,18 +61,20 @@ button {
 
 #save-btn {
     background-color: #6f4c95;
+    font-family: "Gochi Hand", cursive;
 }
 
 
 .back-button {
     text-decoration: none;
-    color: #007bff;
+    color: #7393b2;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
 #start-btn {
     background-image: url('../images/mic.png');
+    background-color: #7cacdc;
     background-size: cover;
     width: 30px;
     height: 30px;
@@ -100,4 +110,20 @@ button {
     cursor: pointer;
     font-size: 36px;
 }
+
+.quit-to-checkin {
+    font-family: "Gochi Hand", cursive;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    text-decoration: none;
+    color: gray;
+    float: right;
+    padding: 20px;
+}
+.quit-to-checkin:hover {
+    color: black;
+}
+
 

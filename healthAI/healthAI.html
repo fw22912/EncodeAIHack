@@ -9,16 +9,24 @@
 <body>
 <a href="../checkIn/selectEmotion/selectColour.html" class="back-button">&#x2B05;</a>
 <div id="content">
+    <div class="titles">
     <h1>How do you feel today?</h1>
-    <p>Click the button, then speak into your microphone.</p>
+    <p>Click the button, then speak into your microphone.</p><br>
+    </div>
     <div class="container">
         <div id="chat-container"></div>
-        <button id="start-btn"></button>
+        <button id="start-btn"></button><br>
         <input type="text" id="output" placeholder="Transcribed text will appear here...">
         <button id="save-btn">Save</button>
+        <br>
+        <button id="analyse">Analyse</button>
     </div>
 </div>
-<!--<script src="../healthAI/healthAIscript.js"></script>-->
+
+<div class="quit-to-checkin" id="quit">
+    <a href="../index.html" class="quit-to-checkin">Quit</a>
+</div>
+
 <script>
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -52,6 +60,31 @@
         const chatContainer = document.getElementById('chat-container');
 
         // Function to display a message in the chat
+
+        function initialiseMessages(){
+            // const savedMesssages = JSON.parse(localStorage.getItem('userMessages'));
+            // const csvContent = "Message,IsUser\n" + savedMessages.map(({ message, isUser }) => `"${message}",${isUser}`).join("\n");
+            // const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            // const link = document.createElement("a");
+            // link.href = URL.createObjectURL(blob);
+            // link.download = 'userMessages.csv';
+
+            localStorage.removeItem('userMessages');
+            console.log("Cleared Messages.");
+        }
+
+        function displayAndSveMessage(message, isUser = false){
+            const messageDiv = document.createElement('div');
+            messageDiv.className = isUser ? 'user-message' : 'text-bubble';
+            messageDiv.textContent = message;
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            const savedMessages = JSON.parse(localStorage.getItem('userMessages')) || [];
+            savedMessages.push({message});
+            localStorage.setItem('userMessages', JSON.stringify(savedMessages));
+            console.log("logged: ", savedMessages);
+        }
         function displayMessage(message, isUser = false) {
             const messageDiv = document.createElement('div');
             messageDiv.className = isUser ? 'user-message' : 'text-bubble';
@@ -76,7 +109,8 @@
             outputTextBox.value = transcript; // Set the value of the text box
 
             // Display the user's response
-            displayMessage(transcript, true);
+            // displayMessage(transcript, true);
+            displayAndSveMessage(transcript, true);
 
             // Schedule the next question to be displayed after a delay
             if (questionIndex < questions.length) {
@@ -117,6 +151,7 @@
 
         function saveText() {
             const textToSave = outputTextBox.value;
+            console.log(textToSave);
             localStorage.setItem('transcribedText', textToSave);
             alert('Text saved to local storage!');
         }
@@ -124,6 +159,11 @@
         // Event handler for button click to toggle speech recognition
         document.getElementById('start-btn').addEventListener('click', toggleRecognition);
         document.getElementById('save-btn').addEventListener('click', saveText);
+        document.getElementById('analyse').addEventListener('click', function(){
+            const savedMessages = JSON.parse(localStorage.getItem('userMessages'));
+
+            window.location.href = 'http://localhost:63342/EncodeAIHack/healthAI/Cohere.html';
+        })
     } else {
         document.getElementById('output').value = 'Speech recognition is not supported in your browser.';
     }
