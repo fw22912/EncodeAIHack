@@ -2,6 +2,7 @@ const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const {hash} = require("bcrypt");
 const app = express();
 const port = 8080;
 
@@ -15,8 +16,8 @@ const connection = mysql.createConnection({
 });
 
 app.post('/register', (req, res) => {
-  const { firstname, lastname, age, username, password } = req.body;
-  const userQuery = 'INSERT INTO User (firstname, lastname, age) VALUES (?, ?, ?)';
+  const { firstname, lastname, age, useremail, password } = req.body;
+  const userQuery = 'INSERT INTO Login (firstname, lastname, age) VALUES (?, ?, ?)';
   const userValues = [firstname, lastname, age];
 
   connection.query(userQuery, userValues, (userErr, userResult) => {
@@ -26,8 +27,10 @@ app.post('/register', (req, res) => {
       return;
     }
 
-    const loginQuery = 'INSERT INTO UserLogin (username, hashpwd, customerID) VALUES (?, ?, ?)';
-    const loginVal = [username, password, userResult.insertId];
+    const username = firstname + " " + lastname
+
+    const loginQuery = 'INSERT INTO UserRegister (username, hashpwd, useremail) VALUES (?, ?, ?)';
+    const loginVal = [username, password, useremail];
 
     connection.query(loginQuery, loginVal, (loginErr) => {
       if (loginErr) {
@@ -40,6 +43,26 @@ app.post('/register', (req, res) => {
     });
   });
 });
+
+
+app.get("/api/Login", (req, res) => {
+  const emailLogin = req.query.useremail;
+  const query = 'SELECT hashpwd FROM UserRegister WHERE useremail = ?';
+  connection.query(query, [emailLogin], (error, result) => {
+    if(error){
+      console.error('Error fetching data:' , error);
+      res.status(500).json({error: 'Internal Server Error'});
+      return;
+    }
+    if (length(results) > 0){
+      res.json(null);
+    } else{
+      const hashedPassword = results[0].password;
+      res.json(hashedPassword);
+    }
+  })
+});
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
