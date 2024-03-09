@@ -45,25 +45,24 @@ app.post('/register', (req, res) => {
 });
 
 
-app.get("/api/Login", (req, res) => {
+app.get("/api/login", (req, res) => {
   const emailLogin = req.query.useremail;
-  const query = 'SELECT hashpwd FROM UserRegister WHERE useremail = ?';
-  connection.query(query, [emailLogin], (error, result) => {
-    if(error){
-      console.error('Error fetching data:' , error);
-      res.status(500).json({error: 'Internal Server Error'});
+  const query3 = 'SELECT hashpwd FROM UserRegister WHERE useremail = ?';
+  connection.query(query3, [emailLogin], (error, results) => {
+    if (error) {
+      console.error('Error fetching data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
       return;
     }
-    if (length(results) > 0){
+    if (results.length === 0) {
       res.json(null);
-    } else{
-      const hashedPassword = results[0].password;
+    } else {
+      const hashedPassword = results[0].hashpwd;
       res.json(hashedPassword);
     }
-  })
-});
-
+  });
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
