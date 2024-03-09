@@ -1,7 +1,8 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Gochi Hand", cursive;
     text-align: center;
     margin: 20px;
+    background-color: #fdf3eb;
 }
 
 #calendar {
@@ -14,7 +15,7 @@ body {
 }
 
 h2 {
-    font-family: serif;
+    font-family: "Gochi Hand", cursive;
 }
 
 label {
@@ -29,6 +30,7 @@ select {
 }
 
 button {
+    font-family: "Gochi Hand", cursive;
     padding: 10px;
     cursor: pointer;
 }
