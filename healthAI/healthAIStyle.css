@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
@@ -8,11 +8,9 @@ body {
 #content {
     max-width: 600px;
     margin: 20px auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     position: relative;
+    text-align: center;
 }
 
 .container {
@@ -27,7 +25,7 @@ body {
 }
 
 .text-bubble {
-    background-color: #007bff;
+    background-color: lightslategray;
     color: #fff;
     border-radius: 10px;
     padding: 10px;
@@ -54,7 +52,7 @@ button {
 }
 
 #save-btn {
-    background-color: #28a745;
+    background-color: #6f4c95;
 }
 
 
@@ -72,6 +70,9 @@ button {
     height: 30px;
     border: none;
     cursor: pointer;
+    background-color: pink;
+    margin: 0 auto 20px;
+    padding: 20px;
 }
 
 
@@ -80,7 +81,7 @@ button {
 }
 
 .user-message {
-    background-color: #28a745;
+    background-color: lightskyblue;
     color: #fff;
     border-radius: 10px;
     padding: 10px;
