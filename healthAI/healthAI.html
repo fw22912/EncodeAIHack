@@ -16,9 +16,16 @@
         <button id="start-btn"></button>
         <input type="text" id="output" placeholder="Transcribed text will appear here...">
         <button id="save-btn">Save</button>
+        <br>
+        <button id="analyse">Analyse</button>
     </div>
 </div>
+
 <!--<script src="../healthAI/healthAIscript.js"></script>-->
+<div class="quit-to-checkin" id="quit">
+     <a href="../index.html" class="quit-to-checkin" onclick="initialiseMessages()">Quit</a>
+ </div>
+
 <script>
     if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
         const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
@@ -52,6 +59,18 @@
         const chatContainer = document.getElementById('chat-container');
 
         // Function to display a message in the chat
+
+        function initialiseMessages(){
+            // const savedMesssages = JSON.parse(localStorage.getItem('userMessages'));
+            // const csvContent = "Message,IsUser\n" + savedMessages.map(({ message, isUser }) => `"${message}",${isUser}`).join("\n");
+            // const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            // const link = document.createElement("a");
+            // link.href = URL.createObjectURL(blob);
+            // link.download = 'userMessages.csv';
+
+            localStorage.removeItem('userMessages');
+            console.log("Cleared Messages.");
+        }
 
         function displayAndSveMessage(message, isUser = false){
             const messageDiv = document.createElement('div');
@@ -139,6 +158,9 @@
         // Event handler for button click to toggle speech recognition
         document.getElementById('start-btn').addEventListener('click', toggleRecognition);
         document.getElementById('save-btn').addEventListener('click', saveText);
+        document.getElementById('analyse').addEventListener('click', function(){
+            window.location.href = 'http://localhost:63342/EncodeAIHack/healthAI/Cohere.html';
+        })
     } else {
         document.getElementById('output').value = 'Speech recognition is not supported in your browser.';
     }
