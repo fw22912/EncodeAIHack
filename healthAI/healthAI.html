@@ -80,7 +80,7 @@
             chatContainer.scrollTop = chatContainer.scrollHeight;
 
             const savedMessages = JSON.parse(localStorage.getItem('userMessages')) || [];
-            savedMessages.push({message, isUser});
+            savedMessages.push({message});
             localStorage.setItem('userMessages', JSON.stringify(savedMessages));
             console.log("logged: ", savedMessages);
         }
@@ -159,6 +159,8 @@
         document.getElementById('start-btn').addEventListener('click', toggleRecognition);
         document.getElementById('save-btn').addEventListener('click', saveText);
         document.getElementById('analyse').addEventListener('click', function(){
+            const savedMessages = JSON.parse(localStorage.getItem('userMessages'));
+
             window.location.href = 'http://localhost:63342/EncodeAIHack/healthAI/Cohere.html';
         })
     } else {
