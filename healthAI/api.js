@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 const cohere = require('cohere-ai');
 cohere.init('oMAjSR2qS6SCrobemgS3a2t55ZSGSE5Xu6d8dNoN')
 
@@ -31,3 +32,10 @@ const inputs = [
   });
   console.log(response);
 })();
+=======
+const { CohereClient } = require("cohere-ai");
+
+const cohere = new CohereClient({
+    token: "oMAjSR2qS6SCrobemgS3a2t55ZSGSE5Xu6d8dNoN",
+});
+>>>>>>> Stashed changes

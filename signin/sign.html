@@ -18,7 +18,11 @@
     <div class="container">
         <div id="signin-form">
             <h2>Sign in to your account</h2>
+<<<<<<< Updated upstream
             <form action="http://localhost:8080/signin" method="get">
+=======
+            <form action="http://localhost:8080/signin" method="post">
+>>>>>>> Stashed changes
                 <!-- <input type="text" id="activityInput" placeholder="Enter your activity"><br> -->
                 <label for="useremail"></label>
                 <input type="text" id="useremail" name="useremail"  placeholder="Email address" required>
@@ -29,7 +33,9 @@
                 <label for="remember">Remember Me</label>
                 <input type="checkbox" id="remember" name="remember">
                 <br> </br>
+                <a href="index.html" class="sign-in-successful">
                 <button type="submit", id="submit">Sign In</button>
+                </a>
             </form>
             <p>Don't have an account? <a href="../signin/register.html">Register here</a>.</p>
         </div>
