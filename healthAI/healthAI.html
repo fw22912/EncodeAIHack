@@ -18,7 +18,8 @@
     <div class="container">
         <div id="chat-container"></div>
         <button id="start-btn"></button><br>
-        <input type="text" id="output" placeholder="Transcribed text will appear here...">
+        <p id="output"></p>
+<!--        <input type="text" id="output" placeholder="Transcribed text will appear here...">-->
         <div id="buttons-container">
         <button id="save-btn">Save</button>
         <br>
@@ -144,12 +145,12 @@
                 recognition.stop();
                 isListening = false;
                 document.getElementById('start-btn').style.backgroundImage = "url('../images/mic.png')"; // Change background to microphone icon
-                outputTextBox.value = 'Recognition stopped.';
+                outputTextBox.innerText = 'Recognition stopped.';
             } else {
                 recognition.start();
                 isListening = true;
                 document.getElementById('start-btn').style.backgroundImage = "url('../images/mic.png')"; // Change background to active microphone icon
-                outputTextBox.value = 'Listening...';
+                outputTextBox.innerText = 'Listening...';
             }
         }
 
