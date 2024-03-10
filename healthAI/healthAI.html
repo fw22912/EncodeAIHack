@@ -23,8 +23,7 @@
         <div id="buttons-container">
         <button id="save-btn">Save</button>
         <br>
-        <button id="analyse">Analyse</button>
-        </div>
+        <button id="analyse" onclick="window.location.href = 'Cohere.html'">Analyse</button>
     </div>
 </div>
 
@@ -170,21 +169,28 @@
         document.getElementById('start-btn').addEventListener('click', toggleRecognition);
         document.getElementById('save-btn').addEventListener('click', saveText);
         document.getElementById('analyse').addEventListener('click', function() {
-            // Get the saved messages from localStorage
             const savedMessages = JSON.parse(localStorage.getItem('userMessages'));
 
-            // Check if there are messages to send
             if (savedMessages && savedMessages.length > 0) {
-                // Convert the messages to a JSON string and pass it as a query parameter
-                const messagesQueryParam = encodeURIComponent(JSON.stringify(savedMessages));
-
-                // Redirect to the Cohere.html page with the messages as a query parameter
-                window.location.href = `http://localhost:63342/EncodeAIHack/healthAI/Cohere.html?messages=${messagesQueryParam}`;
+                fetch('http://localhost:63442/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ messages: savedMessages }),
+                })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Analysis result:', result);
+                    // Handle the analysis result as needed
+                })
+                .catch(error => {
+                    console.error('Error analyzing messages:', error);
+                });
             } else {
-                // Handle the case when there are no saved messages
                 alert('No messages to analyze.');
             }
-});
+        });
 
     } else {
         document.getElementById('output').value = 'Speech recognition is not supported in your browser.';
