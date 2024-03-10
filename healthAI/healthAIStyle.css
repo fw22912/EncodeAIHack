@@ -55,7 +55,7 @@ body {
 
 button {
     padding: 10px;
-    background-color: #007bff;
+    background-color: #7BB7E0;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -65,14 +65,21 @@ button {
     height: 50px;
 }
 
+button:hover {
+    background-color: #6291b1;
+}
+
 #save-btn {
-    background-color: #6f4c95;
-    font-family: "Gochi Hand", cursive;
+    background-color: #A359A0;
+    font-family: "Open Sans", sans-serif;
     width: 100px;
     height: 50px;
     margin-bottom: 10px;
 }
 
+#save-btn:hover {
+    background-color: #854a83;
+}
 
 .back-button {
     text-decoration: none;
