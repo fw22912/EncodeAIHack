@@ -5,6 +5,7 @@ body {
     justify-content: center;
     margin: 20px;
     font-family: "Gochi Hand", cursive;
+    background: #fdf3eb;
 }
 
 .title-container {
@@ -36,7 +37,7 @@ p {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    font-family: "Gochi Hand", cursive;
+    font-family: "Open Sans", sans-serif;
     text-align: center;
     position: relative;
     display: inline-block;
@@ -90,7 +91,7 @@ img {
 
 
 .help-text {
-    font-family: "Gochi Hand", cursive;
+    font-family: "Open Sans", sans-serif;
     color: white;
     font-size: 20px;
     position: absolute;
@@ -103,7 +104,7 @@ img {
 }
 
 .helpline-text {
-    font-family: "Gochi Hand", cursive;
+    font-family: "Open Sans", sans-serif;
     margin-top: 25%;
     margin-left: 20px;
     color: white;
