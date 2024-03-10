@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cohere API Demo</title>
-  <link rel="responses" href="api.js">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML and Python API</title>
 </head>
 <body>
 
-<h1>Cohere API Demo</h1>
-<div id="classification-result"></div>
+<h1>Data from Python API</h1>
+<div id="api-response"></div>
 
-<script src="api.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Make a Fetch API request to the Python API
+        fetch('http://localhost:63442/api/data')
+            .then(response => response.json())
+            .then(data => {
+                // Handle the API response
+                const resultElement = document.getElementById('api-response');
+                resultElement.innerText = `API Response: ${data.message}`;
+            })
+            .catch(error => console.error('Error:', error));
+    });
+</script>
 
 </body>
 </html>
