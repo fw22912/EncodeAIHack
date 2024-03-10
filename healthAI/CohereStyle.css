@@ -1,0 +1,66 @@
+body {
+    font-family: "Gochi Hand", cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #fdf3eb;
+    text-align: center;
+}
+
+.chat-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    overflow: hidden; /* Ensures proper alignment of the messages */
+}
+
+.user-message,
+.bot-message {
+    display: inline-block;
+    clear: both; /* Ensure proper alignment */
+    max-width: 70%; /* Limit the width to prevent overflow */
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.user-message {
+    background-color: #e6f2ff;
+    float: left;
+}
+
+.bot-message {
+    background-color: #f0f0f0;
+    float: right;
+}
+
+.message-text {
+    margin: 0;
+}
+.heading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Calibri", sans-serif;
+}
+.heading-container img {
+    width: 50px; /* Adjust the width of the image as needed */
+    height: 50px; /* Adjust the height of the image as needed */
+    margin-right: 10px; /* Adjust the spacing between the image and text */
+}
+.quit-to-checkin {
+    font-family: "Gochi Hand", cursive;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    text-decoration: none;
+    color: gray;
+    float: right;
+    padding: 20px;
+}
+.quit-to-checkin:hover {
+    color: black;
+}
