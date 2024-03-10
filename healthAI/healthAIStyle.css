@@ -47,23 +47,46 @@ body {
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    width: max-content;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#output:empty {
+    border: none;
+}
+#buttons-container {
+    text-align: center;
 }
 
 button {
     padding: 10px;
-    background-color: #007bff;
+    background-color: #7BB7E0;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 10px;
+    width: 100px;
+    height: 50px;
+}
+
+button:hover {
+    background-color: #6291b1;
 }
 
 #save-btn {
-    background-color: #6f4c95;
-    font-family: "Gochi Hand", cursive;
+    background-color: #A359A0;
+    font-family: "Open Sans", sans-serif;
+    width: 100px;
+    height: 50px;
+    margin-bottom: 10px;
 }
 
+#save-btn:hover {
+    background-color: #854a83;
+}
 
 .back-button {
     text-decoration: none;
@@ -74,7 +97,6 @@ button {
 
 #start-btn {
     background-image: url('../images/mic.png');
-    background-color: #7cacdc;
     background-size: cover;
     width: 30px;
     height: 30px;
@@ -96,6 +118,7 @@ button {
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
+    margin-left: 100px;
     align-self: flex-end;
     max-width: 80%;
     word-wrap: break-word;
