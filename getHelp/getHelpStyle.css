@@ -3,8 +3,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* height: 100vh; */
     margin: 20px;
+    font-family: "Gochi Hand", cursive;
 }
 
 .title-container {
@@ -12,59 +12,55 @@ body {
     margin: 0 auto;
     padding: 20px;
     text-align: left;
+    font-family: "Gochi Hand", cursive;
 }
+
 h1 {
     font-size: 32px;
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
+    font-family: "Gochi Hand", cursive;
 }
+
 p {
     font-size: 16px;
     color: #666;
     margin-bottom: 20px;
     font-style: italic;
+    font-family: "Gochi Hand", cursive;
 
 }
 
-/*.container {*/
-/*    display: flex;*/
-/*    position: relative;*/
-/*    width: 50%;*/
-/*  }*/
+
 .container {
     max-width: 800px;
     margin: 0 auto;
-    /*padding: 20px;*/
+    font-family: "Gochi Hand", cursive;
     text-align: center;
     position: relative;
     display: inline-block;
 }
+
 .image-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
     grid-gap: 30px;
 }
-  
-  /*.image {*/
-  /*  display: block;*/
-  /*  width: 50%;*/
-  /*  height: auto;*/
-  /*}*/
-.image{
+
+.image {
     width: 100%;
     height: auto;
     display: block;
 }
+
 img {
     width: 100%;
     height: auto;
-    /*display: flex;*/
-    /*margin: 0 auto 10px;*/
     border-radius: 5px;
 }
-  
-  .wheretogethelp-overlay {
+
+.wheretogethelp-overlay {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -75,10 +71,10 @@ img {
     opacity: 0;
     transition: .5s ease;
     background-color: #6AC66B;
-      border-radius: 5px;
-  }
+    border-radius: 5px;
+}
 
-  .overlay {
+.overlay {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -89,17 +85,12 @@ img {
     opacity: 0;
     transition: .5s ease;
     background-color: #DE0F3F;
-      border-radius: 5px;
-  }
+    border-radius: 5px;
+}
 
-  /*.container:hover .wheretogethelp-overlay {*/
-  /*  opacity: 0.8;*/
-  /*}*/
-  /*.container:hover .overlay {*/
-  /*  opacity: 0.8;*/
-  /*}*/
 
-  .help-text {
+.help-text {
+    font-family: "Gochi Hand", cursive;
     color: white;
     font-size: 20px;
     position: absolute;
@@ -109,14 +100,14 @@ img {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: left;
-  }
+}
 
-  .helpline-text {
+.helpline-text {
+    font-family: "Gochi Hand", cursive;
     margin-top: 25%;
     margin-left: 20px;
-    /* margin-right: 15px; */
     color: white;
-    font-size: 14px;
+    font-size: 13px;
     position: absolute;
     top: 28%;
     left: 28%;
@@ -124,37 +115,14 @@ img {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: left;
-  }
-/*.wheretogethelp-overlay,*/
-/*.overlay {*/
-/*    position: absolute;*/
-/*    top: 0;*/
-/*    left: 0;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    opacity: 0;*/
-/*    transition: opacity 0.5s;*/
-/*    background-color: rgba(0, 0, 0, 0.5); !* Semi-transparent overlay *!*/
-/*    pointer-events: none; !* Ensure overlay doesn't interfere with hover *!*/
-/*    background-color: #6AC66B*/
-/*}*/
+}
 
 .container:hover .wheretogethelp-overlay,
 .container:hover .overlay {
     opacity: 0.8;
 }
 
-/*.help-text,*/
-/*.helpline-text {*/
-/*    color: white;*/
-/*    font-size: 85%;*/
-/*    position: absolute;*/
-/*    top: 50%;*/
-/*    left: 50%;*/
-/*    transform: translate(-50%, -50%);*/
-/*    text-align: left;*/
-/*    pointer-events: none; !* Ensure text doesn't interfere with hover *!*/
-/*}*/
+
 .button-container {
     display: flex;
     flex-wrap: wrap;
@@ -180,7 +148,7 @@ img {
     font-weight: bold;
 
 }
-  
+
 .menu-container {
     position: relative;
 }
