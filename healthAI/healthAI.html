@@ -151,10 +151,15 @@
 
         function saveText() {
             const textToSave = outputTextBox.value;
-            console.log(textToSave);
-            localStorage.setItem('transcribedText', textToSave);
-            alert('Text saved to local storage!');
+
+            if (textToSave) {
+                localStorage.setItem('transcribedText', textToSave);
+                alert('Text saved to local storage!');
+            } else {
+                alert('No transcribed text to save.');
+            }
         }
+
 
         // Event handler for button click to toggle speech recognition
         document.getElementById('start-btn').addEventListener('click', toggleRecognition);
