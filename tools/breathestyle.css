@@ -3,6 +3,7 @@ body {
     display: grid;
     height: 100vh;
     place-items: center;
+    background: #fdf3eb;
 }
 h1{
     font-weight: bold;
