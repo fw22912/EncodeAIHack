@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cohere API Demo</title>
-    <link rel="responses" href="api.js">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cohere API Demo</title>
+  <link rel="responses" href="api.js">
 </head>
 <body>
 
@@ -12,36 +12,79 @@
 <div id="classification-result"></div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Fetch the user messages from local storage
-        const messages = JSON.parse(localStorage.getItem('userMessages')) || [];
 
-        // Prepare examples for Cohere API
-        const examples = messages.map(message => ({ text: message.message, label: 'neutral' }));
+  document.addEventListener('DOMContentLoaded', function () {
+    // Fetch the user messages from local storage
+    const messages = JSON.parse(localStorage.getItem('userMessages')) || [];
 
-        // Make an API request to Cohere for analysis
-        fetch('https://api.cohere.ai/v1/classify', {
-            method: 'POST',
-            url: "/api/v1/classify",
-            contentType: "application/json",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'oMAjSR2qS6SCrobemgS3a2t55ZSGSE5Xu6d8dNoN',
-            },
-            body: JSON.stringify({ examples: examples }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle the response data as needed
-            console.log("Successfully retrieved the data");
-            console.log(data);
+    // Check if there are messages to analyze
+    if (messages.length === 0) {
+      console.error('Error: No messages to analyze');
+      return;
+    }
 
-            // Display the analysis result
-            const resultElement = document.getElementById('classification-result');
-            resultElement.innerText = `Analysis Result: ${data.predictions[0].label}`;
-        })
-        .catch(error => console.error('Error:', error));
-    });
+    // Prepare user messages for Cohere API
+    const inputs = messages.map(message => message.message);
+
+    // Prepare examples for Cohere API
+    const examples = messages.map((message, index) => ({
+      text: message.message,
+      label: index % 2 === 0 ? 'class1' : 'class2', // Assign alternating class labels
+    }));
+
+
+    // Check if inputs and examples arrays are not empty
+    if (inputs.length === 0 || examples.length === 0) {
+      console.error('Error: Inputs or examples array is empty');
+      return;
+    }
+
+    console.log('Inputs to be sent to Cohere API:', inputs);
+    console.log('Examples to be sent to Cohere API:', examples);
+
+// Make an API request to Cohere for analysis
+    fetch('https://api.cohere.ai/v1/classify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Token oMAjSR2qS6SCrobemgS3a2t55ZSGSE5Xu6d8dNoN',
+      },
+      body: JSON.stringify({
+        inputs: inputs,
+        examples: examples,
+      }),
+    }).then(response => response.json())
+            .then(data => {
+              // Handle the response data as needed
+              console.log('Response from Cohere API:', data);
+              saveAsJson(data);
+              console.log(`Confidence: ${data}`)
+
+              // Check if the 'predictions' property exists in the response data
+              if (data.length > 0) {
+                const predictions = data.confidence;
+                // Display the analysis result
+                const resultElement = document.getElementById('classification-result');
+                resultElement.innerText = `Analysis Result: ${data.predictions[0].label}`;
+              } else {
+                console.error('Error: No predictions found in the API response');
+                // Additional logging for debugging purposes
+                console.log('Input Data:', JSON.stringify({ inputs, examples }));
+              }
+            })
+            .catch(error => console.error('Error:', error.message || error));
+
+          function saveAsJson(data) {
+            const jsonBlob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(jsonBlob);
+            downloadLink.download = 'cohere_api_response.json';
+            downloadLink.click();
+    }
+  });
+
+
 </script>
 
 </body>
