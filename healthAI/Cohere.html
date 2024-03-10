@@ -74,19 +74,6 @@
               saveAsJson(data);
               console.log(`Confidence: ${data}`)
 
-              // Check if the 'predictions' property exists in the response data
-            //   if (data.length > 0) {
-            //     const predictions = data.confidence;
-            //     // Display the analysis result
-            //     const resultElement = document.getElementById('classification-result');
-            //     resultElement.innerText = `Analysis Result: ${data.predictions[0].label}`;
-            //   } else {
-            //     console.error('Error: No predictions found in the API response');
-            //     // Additional logging for debugging purposes
-            //     console.log('Input Data:', JSON.stringify({ inputs, examples }));
-            //   }
-            // })
-            // .catch(error => console.error('Error:', error.message || error));
               if (data.classifications && data.classifications.length > 0) {
                 // Process each classification
                 data.classifications.forEach(classification => {
